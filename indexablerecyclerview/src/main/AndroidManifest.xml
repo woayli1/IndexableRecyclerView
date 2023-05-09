@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="me.yokeyword.indexablerecyclerview">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="me.woayli1.indexablerecyclerview">
 
-    <uses-sdk
-        tools:overrideLibrary="com.github.promeg.tinypinyin.lexicons.android.cncity,com.github.promeg.tinypinyin.android.asset.lexicons"/>
-    <application/>
+    <uses-sdk tools:overrideLibrary="com.github.promeg.tinypinyin.lexicons.android.cncity,com.github.promeg.tinypinyin.android.asset.lexicons" />
+    <application />
 </manifest>

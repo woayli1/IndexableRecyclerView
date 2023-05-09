@@ -11,10 +11,10 @@
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="12dp"
         android:paddingTop="12dp"
-        tools:text="合肥市"
-        android:textSize="16sp" />
+        android:paddingBottom="12dp"
+        android:textSize="16sp"
+        tools:text="合肥市" />
 
     <ImageView
         android:layout_width="match_parent"
