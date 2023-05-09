@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -126,8 +127,8 @@ public class PickContactActivity extends AppCompatActivity {
         }
 
         private class VH extends RecyclerView.ViewHolder {
-            private TextView tv;
-            private ImageView img;
+            private final TextView tv;
+            private final ImageView img;
 
             public VH(View itemView) {
                 super(itemView);
@@ -140,10 +141,10 @@ public class PickContactActivity extends AppCompatActivity {
     /**
      * 自定义的Banner Header
      */
-    class BannerHeaderAdapter extends IndexableHeaderAdapter {
+    class BannerHeaderAdapter extends IndexableHeaderAdapter<String> {
         private static final int TYPE = 2;
 
-        public BannerHeaderAdapter(String index, String indexTitle, List datas) {
+        public BannerHeaderAdapter(String index, String indexTitle, List<String> datas) {
             super(index, indexTitle, datas);
         }
 
@@ -166,7 +167,7 @@ public class PickContactActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindContentViewHolder(RecyclerView.ViewHolder holder, Object entity) {
+        public void onBindContentViewHolder(RecyclerView.ViewHolder holder, String entity) {
             // 数据源为null时, 该方法不用实现
         }
 

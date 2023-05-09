@@ -104,7 +104,7 @@ class RealAdapter<T extends IndexableEntity> extends RecyclerView.Adapter<Recycl
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = holder.getAdapterPosition();
+                int position = holder.getAbsoluteAdapterPosition();
                 if (position == RecyclerView.NO_POSITION) return;
                 EntityWrapper<T> wrapper = mDatasList.get(position);
                 if (viewType == EntityWrapper.TYPE_TITLE) {
@@ -136,7 +136,7 @@ class RealAdapter<T extends IndexableEntity> extends RecyclerView.Adapter<Recycl
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                int position = holder.getAdapterPosition();
+                int position = holder.getAbsoluteAdapterPosition();
                 EntityWrapper<T> wrapper = mDatasList.get(position);
                 if (viewType == EntityWrapper.TYPE_TITLE) {
                     if (mTitleLongClickListener != null) {
@@ -236,10 +236,10 @@ class RealAdapter<T extends IndexableEntity> extends RecyclerView.Adapter<Recycl
     }
 
     void removeHeaderFooterData(boolean header, EntityWrapper data) {
-        processremoveHeaderFooterData(header ? mHeaderDatasList : mFooterDatasList, data);
+        processRemoveHeaderFooterData(header ? mHeaderDatasList : mFooterDatasList, data);
     }
 
-    private void processremoveHeaderFooterData(ArrayList<EntityWrapper<T>> list, EntityWrapper data) {
+    private void processRemoveHeaderFooterData(ArrayList<EntityWrapper<T>> list, EntityWrapper data) {
         for (int i = 0; i < list.size(); i++) {
             EntityWrapper wrapper = list.get(i);
             if (wrapper == data) {

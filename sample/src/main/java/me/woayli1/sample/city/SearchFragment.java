@@ -77,7 +77,7 @@ public class SearchFragment extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = holder.getAdapterPosition();
+                    int position = holder.getAbsoluteAdapterPosition();
                     ToastUtil.showShort(getActivity(), "选择了" + items.get(position).getName());
                 }
             });

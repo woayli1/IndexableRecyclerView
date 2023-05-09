@@ -83,7 +83,8 @@ public class IndexableLayout extends FrameLayout {
 
     private IndexableAdapter mIndexableAdapter;
 
-    private TextView mCenterOverlay, mMDOverlay;
+    private AppCompatTextView mMDOverlay;
+    private TextView mCenterOverlay;
 
     private int mBarTextColor, mBarFocusTextColor;
     private float mBarTextSize, mBarTextSpace, mBarWidth;
@@ -615,7 +616,7 @@ public class IndexableLayout extends FrameLayout {
     private void initMDOverlay(int color) {
         mMDOverlay = new AppCompatTextView(mContext);
         mMDOverlay.setBackgroundResource(R.drawable.indexable_bg_md_overlay);
-        ((AppCompatTextView) mMDOverlay).setSupportBackgroundTintList(ColorStateList.valueOf(color));
+        mMDOverlay.setSupportBackgroundTintList(ColorStateList.valueOf(color));
         mMDOverlay.setSingleLine();
         mMDOverlay.setTextColor(Color.WHITE);
         mMDOverlay.setTextSize(38);
