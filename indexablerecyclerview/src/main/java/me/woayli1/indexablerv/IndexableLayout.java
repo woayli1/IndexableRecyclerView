@@ -86,7 +86,7 @@ public class IndexableLayout extends FrameLayout {
     private AppCompatTextView mMDOverlay;
     private TextView mCenterOverlay;
 
-    private int mBarTextColor, mBarFocusTextColor;
+    private int mBarTextColor, mBarBgBackgroundColor, mBarBgBackgroundRadius, mBarFocusTextColor;
     private float mBarTextSize, mBarTextSpace, mBarWidth;
     private Drawable mBarBg;
 
@@ -326,11 +326,14 @@ public class IndexableLayout extends FrameLayout {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.IndexableRecyclerView);
             mBarTextColor = a.getColor(R.styleable.IndexableRecyclerView_indexBar_textColor, ContextCompat.getColor(context, R.color.default_indexBar_textColor));
+            mBarBgBackgroundColor = a.getColor(R.styleable.IndexableRecyclerView_indexBar_selectedBackgroundColor, ContextCompat.getColor(context, R.color.default_indexBar_selectedBackgroundColor));
+            mBarBgBackgroundRadius = a.getInteger(R.styleable.IndexableRecyclerView_indexBar_selectedBackgroundRadius, 0);
             mBarTextSize = a.getDimension(R.styleable.IndexableRecyclerView_indexBar_textSize, getResources().getDimension(R.dimen.default_indexBar_textSize));
             mBarFocusTextColor = a.getColor(R.styleable.IndexableRecyclerView_indexBar_selectedTextColor, ContextCompat.getColor(context, R.color.default_indexBar_selectedTextColor));
             mBarTextSpace = a.getDimension(R.styleable.IndexableRecyclerView_indexBar_textSpace, getResources().getDimension(R.dimen.default_indexBar_textSpace));
             mBarBg = a.getDrawable(R.styleable.IndexableRecyclerView_indexBar_background);
             mBarWidth = a.getDimension(R.styleable.IndexableRecyclerView_indexBar_layout_width, getResources().getDimension(R.dimen.default_indexBar_layout_width));
+
             a.recycle();
         }
 
@@ -344,7 +347,8 @@ public class IndexableLayout extends FrameLayout {
         addView(mRecy, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
         mIndexBar = new IndexBar(context);
-        mIndexBar.init(mBarBg, mBarTextColor, mBarFocusTextColor, mBarTextSize, mBarTextSpace);
+
+        mIndexBar.init(mBarBg, mBarTextColor, mBarFocusTextColor, mBarBgBackgroundColor, mBarBgBackgroundRadius, mBarTextSize, mBarTextSpace);
         LayoutParams params = new LayoutParams((int) mBarWidth, LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.END | Gravity.CENTER_VERTICAL;
         addView(mIndexBar, params);

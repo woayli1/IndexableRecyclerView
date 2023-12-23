@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="IndexableRecyclerView">
+        <!-- 侧边栏选中颜色 -->
         <attr name="indexBar_selectedTextColor" format="color" />
+        <!-- 侧边栏选中背景颜色 -->
+        <attr name="indexBar_selectedBackgroundColor" format="color" />
+        <!-- 侧边栏选中背景半径 -->
+        <attr name="indexBar_selectedBackgroundRadius" format="integer" />
+        <!-- 侧边栏默认颜色 -->
         <attr name="indexBar_textColor" format="color" />
+        <!-- 侧边栏字体默认大小 -->
         <attr name="indexBar_textSize" format="dimension" />
+        <!-- 侧边栏字体上下间距 -->
         <attr name="indexBar_textSpace" format="dimension" />
+        <!-- 侧边栏背景 -->
         <attr name="indexBar_background" format="reference|color" />
+        <!-- 侧边栏宽度 -->
         <attr name="indexBar_layout_width" format="dimension">
             <!--<enum name="wrap_content" value="-2" /> 暂不支持 -->
         </attr>
+
     </declare-styleable>
 </resources>

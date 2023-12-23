@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
@@ -28,23 +27,21 @@ class IndexBar extends View {
     private HashMap<String, Integer> mMapping = new HashMap<>();
     private ArrayList<EntityWrapper> mDatas;
 
-    private int mSelectionPosition;
+    private int mSelectionPosition, bgBackgroundRadius;
     private float mIndexHeight;
 
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint mFocusPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private Paint mBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public IndexBar(Context context) {
         super(context);
     }
 
-    void init(Drawable barBg, int barTextColor, int barFocusTextColor, float barTextSize, float textSpace) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            setBackground(barBg);
-        } else {
-            setBackgroundDrawable(barBg);
-        }
+    void init(Drawable barBg, int barTextColor, int barFocusTextColor, int bgBackgroundColor, int bgBackgroundRadius, float barTextSize, float textSpace) {
+        setBackground(barBg);
 
+        this.bgBackgroundRadius = bgBackgroundRadius;
         this.mTextSpace = textSpace;
 
         mPaint.setColor(barTextColor);
@@ -54,6 +51,9 @@ class IndexBar extends View {
         mFocusPaint.setTextAlign(Paint.Align.CENTER);
         mFocusPaint.setTextSize(barTextSize + (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
         mFocusPaint.setColor(barFocusTextColor);
+
+        mBgPaint.setColor(bgBackgroundColor);
+        mBgPaint.setStyle(Paint.Style.FILL);
     }
 
     @Override
@@ -90,9 +90,10 @@ class IndexBar extends View {
 
         for (int i = 0; i < mIndexList.size(); i++) {
             if (mSelectionPosition == i) {
-                canvas.drawText(mIndexList.get(i), getWidth() / 2, mIndexHeight * 0.85f + mIndexHeight * i, mFocusPaint);
+                canvas.drawCircle(getWidth() / 2f, mIndexHeight * 0.6f + mIndexHeight * i, bgBackgroundRadius == 0 ? getWidth() / 2f : bgBackgroundRadius, mBgPaint);
+                canvas.drawText(mIndexList.get(i), getWidth() / 2f, mIndexHeight * 0.85f + mIndexHeight * i, mFocusPaint);
             } else {
-                canvas.drawText(mIndexList.get(i), getWidth() / 2, mIndexHeight * 0.85f + mIndexHeight * i, mPaint);
+                canvas.drawText(mIndexList.get(i), getWidth() / 2f, mIndexHeight * 0.85f + mIndexHeight * i, mPaint);
             }
         }
     }
