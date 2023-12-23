@@ -233,15 +233,6 @@ public class IndexableLayout extends FrameLayout {
         }
     }
 
-    /**
-     * set sort-mode
-     * Deprecated {@link #setCompareMode(int)}
-     */
-    @Deprecated
-    public void setFastCompare(boolean fastCompare) {
-        setCompareMode(fastCompare ? MODE_FAST : MODE_ALL_LETTERS);
-    }
-
     @IntDef({MODE_FAST, MODE_ALL_LETTERS, MODE_NONE})
     @Retention(RetentionPolicy.SOURCE)
     @interface CompareMode {
